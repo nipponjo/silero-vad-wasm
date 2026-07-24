@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f1ea">
+    <title>Silero VAD · WebAssembly microphone demo</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">WebAssembly microphone demo</p>
+          <h1>Silero VAD</h1>
+        </div>
+        <div class="runtime-status" aria-live="polite">
+          <span id="status-dot" class="status-dot"></span>
+          <span id="status-text">Loading model</span>
+        </div>
+      </header>
+
+      <section class="control-band" aria-label="Voice activity controls">
+        <div class="controls">
+          <button id="start-button" class="primary-button" type="button" disabled>
+            <span class="record-icon" aria-hidden="true"></span>
+            Start
+          </button>
+          <button id="stop-button" class="secondary-button" type="button" disabled>
+            <span class="stop-icon" aria-hidden="true"></span>
+            Stop
+          </button>
+        </div>
+
+        <dl class="metrics">
+          <div>
+            <dt>Probability</dt>
+            <dd id="probability-value">0.000</dd>
+          </div>
+          <div>
+            <dt>Input rate</dt>
+            <dd id="sample-rate-value">—</dd>
+          </div>
+          <div>
+            <dt>Window</dt>
+            <dd id="window-value">—</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="graph-section" aria-labelledby="graph-title">
+        <div class="graph-heading">
+          <div>
+            <p class="eyebrow">Live inference</p>
+            <h2 id="graph-title">Speech probability</h2>
+          </div>
+          <div class="legend" aria-label="Graph legend">
+            <span><i class="legend-line probability-line"></i>Probability</span>
+            <span><i class="legend-line threshold-line"></i>0.5 threshold</span>
+          </div>
+        </div>
+        <div class="canvas-wrap">
+          <canvas id="probability-graph" aria-label="Live speech probability graph"></canvas>
+          <div id="empty-state" class="empty-state">Start the microphone to see live probabilities.</div>
+        </div>
+        <div class="axis-labels" aria-hidden="true">
+          <span>Earlier</span>
+          <span>Now</span>
+        </div>
+      </section>
+
+      <p id="error-message" class="error-message" role="alert" hidden></p>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
