@@ -1,10 +1,15 @@
-# Silero VAD WebAssembly demo
+# Silero VAD WebAssembly
 
-A small browser microphone demo for the [C port](https://github.com/nipponjo/silero-vad-c) of
-[Silero VAD](https://github.com/snakers4/silero-vad). It compiles the native
-implementation vendored from
-[silero-vad-crs](https://github.com/nipponjo/silero-vad-crs) with Emscripten,
-runs inference locally in WebAssembly, and plots the live speech probability.
+A WebAssembly build of the
+[Silero VAD](https://github.com/snakers4/silero-vad) voice activity detector,
+with a small browser demo for processing live microphone audio.
+
+The prebuilt binary in `dist/` is compiled with Emscripten from the
+[silero-vad-c](https://github.com/nipponjo/silero-vad-c) C port. The
+corresponding sources in `native/` are vendored from
+[silero-vad-crs](https://github.com/nipponjo/silero-vad-crs).
+
+Inference runs entirely in the browser, where the demo plots speech probability in real time.
 
 ## Run
 
