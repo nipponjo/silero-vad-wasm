@@ -107,10 +107,17 @@ class WasmVad {
     if (sampleCount <= this.inputCapacity) {
       return;
     }
+
+    const newPointer = this.module._malloc(sampleCount * Float32Array.BYTES_PER_ELEMENT);
+    if (!newPointer) {
+      throw new Error("Could not allocate WASM input buffer.");
+    }
+
     if (this.inputPointer) {
       this.module._free(this.inputPointer);
     }
-    this.inputPointer = this.module._malloc(sampleCount * Float32Array.BYTES_PER_ELEMENT);
+
+    this.inputPointer = newPointer;
     this.inputCapacity = sampleCount;
   }
 
@@ -124,11 +131,17 @@ class WasmVad {
     if (probabilityCount <= this.outputCapacity) {
       return;
     }
+
+    const newPointer = this.module._malloc(probabilityCount * Float32Array.BYTES_PER_ELEMENT);
+    if (!newPointer) {
+      throw new Error("Could not allocate WASM output buffer.");
+    }
+
     if (this.outputPointer) {
       this.module._free(this.outputPointer);
     }
-    this.outputPointer =
-      this.module._malloc(probabilityCount * Float32Array.BYTES_PER_ELEMENT);
+    
+    this.outputPointer = newPointer;
     this.outputCapacity = probabilityCount;
   }
 
