@@ -25,6 +25,7 @@ Press **Start**, allow microphone access, and speak to see probability values
 between 0 and 1.
 
 ## Preview
+<img width="1944" height="1560" alt="626343858-a21e244d-2a57-4231-ad69-8164bfc39938" src="https://github.com/user-attachments/assets/ebec49d1-6ebe-4a1c-9591-78c1c1189133" />
 
 
 ## Build
