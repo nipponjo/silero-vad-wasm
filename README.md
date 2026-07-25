@@ -10,6 +10,13 @@ runs inference locally in WebAssembly, and plots the live speech probability.
 
 The demo must be served over HTTP; opening `index.html` directly will not load the ES module and WASM file correctly.
 
+Clone repo:
+
+```sh
+git clone https://github.com/nipponjo/silero-vad-wasm.git
+cd silero-vad-wasm
+```
+
 Run with Python 3, Node.js, or another local static-file server:
 
 ```sh
